@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ugbor Chidinma Benita | Medical Student & Future Physician</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy:       #0D2137;
+            --teal:       #0B6E6E;
+            --teal-light: #14A0A0;
+            --gold:       #C9A84C;
+            --gold-light: #E5C97E;
+            --off-white:  #F8F9FA;
+            --gray-100:   #F1F3F5;
+            --gray-200:   #E9ECEF;
+            --gray-400:   #ADB5BD;
+            --gray-600:   #6C757D;
+            --gray-800:   #343A40;
+            --text:       #1A2332;
+            --serif: 'Playfair Display', Georgia, serif;
+            --sans:  'Inter', system-ui, sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.18);
+            --radius:    12px;
+            --radius-lg: 20px;
+            --ease: all 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); color: var(--text); background: #fff; line-height: 1.6; overflow-x: hidden; }
+
+        /* ── NAVBAR ─────────────────────────────────────── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 2rem; transition: var(--ease);
+        }
+        nav.scrolled {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 70px;
+        }
+        .nav-logo { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; }
+        .nav-logo span { color: var(--teal); }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--gray-800); font-size: 0.875rem;
+            font-weight: 500; letter-spacing: 0.3px; transition: var(--ease); position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--teal); transition: var(--ease);
+        }
+        .nav-links a:hover { color: var(--teal); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--teal) !important; color: white !important;
+            padding: 0.5rem 1.25rem; border-radius: 50px;
+            font-weight: 600 !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--navy) !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: var(--ease); }
+
+        /* ── HERO ────────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, #1a3a5c 50%, #0B6E6E 100%);
+            display: flex; align-items: center;
+            padding: 7rem 2rem 4rem;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -40%; right: -15%;
+            width: 700px; height: 700px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(20,160,160,0.15) 0%, transparent 70%);
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: -30%; left: -10%;
+            width: 500px; height: 500px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+        }
+        #hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .cross-float {
+            position: absolute; opacity: 0.05; color: white; font-size: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+
+        .hero-inner {
+            max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+        .hero-content { color: white; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+            padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.78rem;
+            font-weight: 600; color: var(--gold-light); margin-bottom: 1.5rem;
+            letter-spacing: 0.8px; backdrop-filter: blur(10px);
+        }
+        .hero-name {
+            font-family: var(--serif); font-size: clamp(2.6rem, 5vw, 3.9rem);
+            font-weight: 700; line-height: 1.08; margin-bottom: 1rem; letter-spacing: -1px;
+        }
+        .hero-name span { color: var(--gold-light); }
+        .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); margin-bottom: 1.4rem; }
+        .hero-sub strong { color: white; font-weight: 600; }
+        .hero-desc { font-size: 0.97rem; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 2.5rem; max-width: 480px; }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.875rem 1.75rem; border-radius: 50px; font-size: 0.9rem;
+            font-weight: 600; text-decoration: none; transition: var(--ease); border: 2px solid transparent; cursor: pointer;
+        }
+        .btn-gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+        .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.4); }
+        .btn-ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.3); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+
+        .hero-stats {
+            display: flex; gap: 2.5rem; margin-top: 3rem;
+            padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+        .stat-lbl { font-size: 0.73rem; color: rgba(255,255,255,0.45); margin-top: 0.25rem; letter-spacing: 0.5px; }
+
+        /* Photo side */
+        .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+        .photo-frame {
+            width: 370px; height: 455px;
+            border-radius: 30px 30px 140px 30px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(20,160,160,0.1) 100%);
+            border: 1.5px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; backdrop-filter: blur(10px);
+        }
+        .photo-frame::before {
+            content: ''; position: absolute; inset: -2px; z-index: -1; border-radius: inherit;
+            background: linear-gradient(135deg, rgba(201,168,76,0.5), transparent 50%, rgba(20,160,160,0.5));
+        }
+        .photo-placeholder {
+            display: flex; flex-direction: column; align-items: center; gap: 1rem; color: rgba(255,255,255,0.28);
+        }
+        .photo-avatar {
+            width: 110px; height: 110px; border-radius: 50%;
+            background: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center; font-size: 2.8rem;
+        }
+        .photo-placeholder p { font-size: 0.8rem; text-align: center; max-width: 140px; line-height: 1.5; }
+        .float-card {
+            position: absolute; background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px); border-radius: 14px;
+            padding: 0.9rem 1.1rem; box-shadow: var(--shadow-lg);
+            animation: float 4s ease-in-out infinite;
+        }
+        .float-card-l { left: -40px; bottom: 90px; animation-delay: 0.5s; }
+        .float-card-r { right: -30px; top: 90px; animation-delay: 1.1s; }
+        .fc-lbl { font-size: 0.62rem; color: var(--gray-400); font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+        .fc-val { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-top: 0.15rem; }
+        .fc-icon { font-size: 1.4rem; margin-bottom: 0.2rem; }
+
+        /* ── SECTION SHELLS ──────────────────────────────── */
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .sec-label {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.73rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem;
+        }
+        .sec-label::before { content: ''; width: 24px; height: 2px; background: var(--teal); }
+        .sec-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--navy); line-height: 1.2; letter-spacing: -0.5px; }
+        .sec-sub { font-size: 1rem; color: var(--gray-600); margin-top: 0.75rem; max-width: 600px; line-height: 1.75; }
+
+        /* ── ABOUT ───────────────────────────────────────── */
+        .about { background: var(--off-white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: center; }
+        .about-img-area { position: relative; }
+        .about-img {
+            width: 100%; aspect-ratio: 3/4; border-radius: var(--radius-lg);
+            background: linear-gradient(145deg, var(--gray-200), var(--gray-100));
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; gap: 1.25rem; color: var(--gray-400); overflow: hidden;
+        }
+        .about-img-icon {
+            width: 96px; height: 96px; border-radius: 50%;
+            background: var(--gray-200); border: 3px dashed var(--gray-400);
+            display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
+        }
+        .about-img p { font-size: 0.82rem; text-align: center; max-width: 180px; line-height: 1.5; }
+        .badge-bubble {
+            position: absolute; bottom: -20px; right: -20px;
+            background: var(--teal); color: white;
+            padding: 1.25rem 1.5rem; border-radius: var(--radius);
+            text-align: center; box-shadow: var(--shadow-md);
+        }
+        .bb-num { font-family: var(--serif); font-size: 2rem; font-weight: 700; line-height: 1; }
+        .bb-txt { font-size: 0.7rem; opacity: 0.85; margin-top: 0.2rem; letter-spacing: 0.5px; }
+        .about-bio { font-size: 1.02rem; color: var(--gray-600); line-height: 1.9; margin-top: 1.5rem; margin-bottom: 1.75rem; }
+        .about-bio strong { color: var(--teal); }
+        .about-grid-info { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 2rem; }
+        .info-cell { background: white; border-radius: var(--radius); padding: 1.1rem 1.2rem; box-shadow: var(--shadow-sm); border-left: 3px solid var(--teal); }
+        .info-lbl { font-size: 0.68rem; font-weight: 700; color: var(--gray-400); letter-spacing: 1px; text-transform: uppercase; }
+        .info-val { font-size: 0.88rem; font-weight: 600; color: var(--navy); margin-top: 0.3rem; }
+        .social-row { display: flex; gap: 0.75rem; }
+        .soc-btn {
+            width: 42px; height: 42px; border-radius: 50%; background: var(--gray-100);
+            color: var(--gray-600); display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: var(--ease); border: 1px solid var(--gray-200); font-size: 1rem;
+        }
+        .soc-btn:hover { background: var(--teal); color: white; border-color: var(--teal); transform: translateY(-2px); }
+
+        /* ── EDUCATION ───────────────────────────────────── */
+        .education { background: white; }
+        .timeline { position: relative; padding-left: 2.5rem; margin-top: 3rem; }
+        .timeline::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 2px; background: linear-gradient(to bottom, var(--teal), var(--gold));
+        }
+        .tl-item {
+            position: relative; margin-bottom: 2.5rem; background: var(--off-white);
+            border-radius: var(--radius); padding: 2rem; border: 1px solid var(--gray-200);
+            transition: var(--ease);
+        }
+        .tl-item:hover { box-shadow: var(--shadow-md); transform: translateX(5px); border-color: var(--teal); }
+        .tl-item::before {
+            content: ''; position: absolute; left: -2.85rem; top: 1.75rem;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--teal); border: 3px solid white; box-shadow: 0 0 0 3px var(--teal);
+        }
+        .tl-period { font-size: 0.73rem; font-weight: 700; color: var(--teal); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+        .tl-degree { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
+        .tl-inst { font-size: 0.9rem; color: var(--gray-600); font-weight: 500; margin-bottom: 0.75rem; }
+        .tl-inst i { color: var(--teal); margin-right: 0.4rem; }
+        .tl-desc { font-size: 0.88rem; color: var(--gray-600); line-height: 1.75; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tag { padding: 0.28rem 0.85rem; border-radius: 50px; font-size: 0.73rem; font-weight: 500; }
+        .tag-t { background: rgba(11,110,110,0.09); color: var(--teal); }
+        .tag-n { background: rgba(13,33,55,0.08); color: var(--navy); }
+        .tag-g { background: rgba(201,168,76,0.13); color: #8a6d1a; }
+
+        /* ── ROTATIONS ───────────────────────────────────── */
+        .rotations { background: var(--navy); color: white; }
+        .rotations .sec-label { color: var(--gold-light); }
+        .rotations .sec-label::before { background: var(--gold-light); }
+        .rotations .sec-title { color: white; }
+        .rotations .sec-sub { color: rgba(255,255,255,0.55); }
+        .rot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; margin-top: 3rem; }
+        .rot-card {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius); padding: 1.75rem; transition: var(--ease); position: relative; overflow: hidden;
+        }
+        .rot-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--teal-light), var(--gold));
+            transform: scaleX(0); transform-origin: left; transition: var(--ease);
+        }
+        .rot-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .rot-card:hover::before { transform: scaleX(1); }
+        .rot-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+        .rot-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: white; margin-bottom: 0.4rem; }
+        .rot-hosp { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-bottom: 0.75rem; }
+        .rot-hosp i { margin-right: 0.3rem; }
+        .rot-desc { font-size: 0.85rem; color: rgba(255,255,255,0.57); line-height: 1.7; }
+        .status {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            margin-top: 1rem; font-size: 0.69rem; font-weight: 700;
+            letter-spacing: 0.5px; padding: 0.25rem 0.75rem; border-radius: 50px;
+        }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+        .done { background: rgba(20,184,116,0.15); color: #4ade80; }
+        .ongoing { background: rgba(201,168,76,0.15); color: var(--gold-light); }
+        .ongoing .status-dot { animation: pulse 1.5s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+
+        /* ── RESEARCH ────────────────────────────────────── */
+        .research { background: white; }
+        .res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .res-card { border-radius: var(--radius); padding: 2rem; border: 1px solid var(--gray-200); transition: var(--ease); }
+        .res-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--teal); }
+        .res-type { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 50px; margin-bottom: 1rem; }
+        .res-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.7rem; line-height: 1.4; }
+        .res-desc { font-size: 0.875rem; color: var(--gray-600); line-height: 1.75; margin-bottom: 1.25rem; }
+        .res-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.73rem; color: var(--gray-400); }
+        .res-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+        /* ── SKILLS ──────────────────────────────────────── */
+        .skills { background: var(--off-white); }
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+        .skill-group-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--navy); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.7rem; }
+        .skill-group-title i { color: var(--teal); }
+        .skill-item { margin-bottom: 1.25rem; }
+        .skill-head { display: flex; justify-content: space-between; margin-bottom: 0.45rem; }
+        .skill-name { font-size: 0.875rem; font-weight: 600; color: var(--gray-800); }
+        .skill-lvl { font-size: 0.73rem; color: var(--teal); font-weight: 600; }
+        .skill-bar { height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden; }
+        .skill-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-light)); transform: scaleX(0); transform-origin: left; }
+        .chips { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+        .chip { padding: 0.45rem 1.05rem; border-radius: 50px; font-size: 0.78rem; font-weight: 500; background: white; color: var(--navy); border: 1.5px solid var(--gray-200); transition: var(--ease); cursor: default; }
+        .chip:hover { background: var(--teal); color: white; border-color: var(--teal); transform: translateY(-2px); }
+        .langs { margin-top: 2rem; }
+        .lang-row { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; background: white; border-radius: var(--radius); margin-bottom: 0.7rem; border: 1px solid var(--gray-200); }
+        .lang-name { font-weight: 600; font-size: 0.875rem; color: var(--navy); }
+        .lang-dots { display: flex; gap: 4px; }
+        .ld { width: 10px; height: 10px; border-radius: 50%; background: var(--gray-200); }
+        .ld.on { background: var(--teal); }
+
+        /* ── ACHIEVEMENTS ────────────────────────────────── */
+        .achievements { background: white; }
+        .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .ach-card { background: var(--off-white); border-radius: var(--radius); padding: 2rem; text-align: center; border: 1px solid var(--gray-200); transition: var(--ease); }
+        .ach-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+        .ach-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin: 0 auto 1.25rem; }
+        .ach-title { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.45rem; }
+        .ach-org { font-size: 0.78rem; color: var(--gray-400); margin-bottom: 0.5rem; }
+        .ach-year { font-size: 0.73rem; font-weight: 700; color: var(--teal); letter-spacing: 1px; }
+
+        /* ── CONTACT ─────────────────────────────────────── */
+        .contact { background: var(--off-white); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+        .contact-blurb { font-size: 1rem; color: var(--gray-600); line-height: 1.8; margin-bottom: 2rem; }
+        .citem { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+        .cicon { width: 48px; height: 48px; border-radius: 12px; background: rgba(11,110,110,0.09); display: flex; align-items: center; justify-content: center; color: var(--teal); font-size: 1rem; flex-shrink: 0; }
+        .ci-lbl { font-size: 0.68rem; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 1px; }
+        .ci-val { font-size: 0.9rem; font-weight: 500; color: var(--navy); margin-top: 0.1rem; }
+        .cform { background: white; border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm); }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.45rem; letter-spacing: 0.3px; }
+        .form-input, .form-ta {
+            width: 100%; padding: 0.875rem 1rem; border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius); font-family: var(--sans); font-size: 0.9rem;
+            color: var(--text); background: white; transition: var(--ease); outline: none;
+        }
+        .form-input:focus, .form-ta:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(11,110,110,0.1); }
+        .form-ta { height: 130px; resize: none; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .btn-send {
+            width: 100%; padding: 1rem; background: var(--teal); color: white; border: none;
+            border-radius: 50px; font-family: var(--sans); font-size: 0.9rem; font-weight: 600;
+            cursor: pointer; transition: var(--ease); display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        }
+        .btn-send:hover { background: var(--navy); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer { background: var(--navy); color: rgba(255,255,255,0.55); padding: 2.5rem 2rem; }
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+        }
+        .foot-logo { font-family: var(--serif); font-size: 1.1rem; color: white; font-weight: 700; }
+        .foot-logo span { color: var(--gold-light); }
+        .foot-copy { font-size: 0.78rem; }
+        .foot-social { display: flex; gap: 0.75rem; }
+        .foot-social a { color: rgba(255,255,255,0.35); font-size: 1rem; transition: var(--ease); text-decoration: none; }
+        .foot-social a:hover { color: var(--gold-light); }
+
+        /* ── REVEAL ANIMATION ────────────────────────────── */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-visual { display: none; }
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .badge-bubble { right: 0; }
+        }
+        @media (max-width: 600px) {
+            section { padding: 4rem 1.25rem; }
+            .hero { padding: 5rem 1.25rem 3rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .hero-stats { gap: 1.5rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ NAVBAR ══ -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#home" class="nav-logo">Chidinma<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#rotations">Experience</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ════ -->
+<section class="hero" id="home">
+    <div id="hero-bg"></div>
+    <div class="hero-inner">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fa-solid fa-stethoscope"></i> 5th Year MBBS Candidate · ABSU</div>
+            <h1 class="hero-name">Ugbor<br><span>Chidinma</span><br>Benita</h1>
+            <p class="hero-sub"><strong>Medical Student</strong> · Abia State University<br>Clinical Training @ ABSUTH, Aba</p>
+            <p class="hero-desc">
+                A passionate and driven medical student committed to delivering compassionate, evidence-based care.
+                Training at the frontlines of clinical medicine in Nigeria with a deep vision to transform
+                healthcare outcomes for the communities that need it most.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-gold"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+                <a href="#rotations" class="btn btn-ghost"><i class="fa-solid fa-briefcase-medical"></i> View Experience</a>
+            </div>
+            <div class="hero-stats">
+                <div><div class="stat-num">5+</div><div class="stat-lbl">Years in Medicine</div></div>
+                <div><div class="stat-num">6+</div><div class="stat-lbl">Clinical Rotations</div></div>
+                <div><div class="stat-num">2027</div><div class="stat-lbl">Expected Graduation</div></div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    <div class="photo-avatar"><i class="fa-solid fa-user-doctor"></i></div>
+                    <p>Professional photo<br>coming soon</p>
+                </div>
+            </div>
+            <div class="float-card float-card-l">
+                <div class="fc-icon">🏥</div>
+                <div class="fc-lbl">Training At</div>
+                <div class="fc-val">ABSUTH</div>
+            </div>
+            <div class="float-card float-card-r">
+                <div class="fc-icon">🎓</div>
+                <div class="fc-lbl">Expected</div>
+                <div class="fc-val">MBBS 2027</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════ ABOUT ═══ -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-area reveal">
+                <div class="about-img">
+                    <div class="about-img-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                    <p>Professional portrait<br>placeholder</p>
+                </div>
+                <div class="badge-bubble">
+                    <div class="bb-num">2027</div>
+                    <div class="bb-txt">Expected MBBS</div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="sec-label">About Me</div>
+                <h2 class="sec-title">Driven by Purpose,<br>Guided by Compassion</h2>
+                <p class="about-bio">
+                    I am Ugbor Chidinma Benita, a fifth-year medical student at Abia State University,
+                    undertaking my clinical training at the Abia State University Teaching Hospital (ABSUTH) in Aba, Nigeria.
+                    My journey into medicine is rooted in a deep desire to serve — to make a real, tangible difference
+                    in the lives of those who need care most.
+                </p>
+                <p class="about-bio">
+                    Through years of rigorous academic and clinical training, I have developed a strong foundation
+                    across all major medical specialties. I am particularly drawn to
+                    <strong>[specialty of interest — e.g. Internal Medicine / Paediatrics / Obs & Gynae]</strong>,
+                    where I aspire to build a purposeful career focused on improving health outcomes in underserved
+                    communities across Nigeria.
+                </p>
+                <div class="about-grid-info">
+                    <div class="info-cell"><div class="info-lbl">University</div><div class="info-val">Abia State University</div></div>
+                    <div class="info-cell"><div class="info-lbl">Teaching Hospital</div><div class="info-val">ABSUTH, Aba</div></div>
+                    <div class="info-cell"><div class="info-lbl">Programme</div><div class="info-val">MBBS (Medicine & Surgery)</div></div>
+                    <div class="info-cell"><div class="info-lbl">Year Started</div><div class="info-val">2019</div></div>
+                </div>
+                <div class="social-row">
+                    <a href="#" class="soc-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="soc-btn" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="soc-btn" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+                    <a href="mailto:placeholder@email.com" class="soc-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════ EDUCATION ═ -->
+<section class="education" id="education">
+    <div class="container">
+        <div class="reveal">
+            <div class="sec-label">Education</div>
+            <h2 class="sec-title">Academic Journey</h2>
+            <p class="sec-sub">A rigorous six-year MBBS programme combining pre-clinical sciences with intensive clinical training at Nigeria's leading institutions.</p>
+        </div>
+        <div class="timeline reveal">
+            <div class="tl-item">
+                <div class="tl-period">2019 – Present</div>
+                <div class="tl-degree">Bachelor of Medicine, Bachelor of Surgery (MBBS)</div>
+                <div class="tl-inst"><i class="fa-solid fa-building-columns"></i> Abia State University, Uturu &nbsp;·&nbsp; ABSUTH, Aba</div>
+                <p class="tl-desc">
+                    Pursuing a comprehensive medical education covering pre-clinical foundations (Anatomy, Physiology, Biochemistry),
+                    para-clinical training (Pathology, Microbiology, Pharmacology) and extensive clinical rotations across all
+                    major departments at ABSUTH. Currently in 5th year with expected completion in 2027.
+                </p>
+                <div class="tags">
+                    <span class="tag tag-t">Clinical Medicine</span>
+                    <span class="tag tag-t">Surgery</span>
+                    <span class="tag tag-t">Paediatrics</span>
+                    <span class="tag tag-n">Obs & Gynae</span>
+                    <span class="tag tag-n">Internal Medicine</span>
+                    <span class="tag tag-g">Year 5 of 6</span>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-period">2016 – 2018</div>
+                <div class="tl-degree">West African Senior School Certificate (WASSCE)</div>
+                <div class="tl-inst"><i class="fa-solid fa-school"></i> [Secondary School Name] &nbsp;·&nbsp; Abia State, Nigeria</div>
+                <p class="tl-desc">
+                    Completed secondary education with distinction in the Sciences — Biology, Chemistry, Physics, and Mathematics —
+                    laying a strong foundation for admission into the MBBS programme.
+                </p>
+                <div class="tags">
+                    <span class="tag tag-g">Sciences</span>
+                    <span class="tag tag-n">WAEC</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════ ROTATIONS ═ -->
+<section class="rotations" id="rotations">
+    <div class="container">
+        <div class="reveal">
+            <div class="sec-label">Clinical Training</div>
+            <h2 class="sec-title">Rotations & Experience</h2>
+            <p class="sec-sub">Hands-on clinical training across all major departments at ABSUTH, building competence in diagnosis, patient management, and clinical decision-making.</p>
+        </div>
+        <div class="rot-grid reveal">
+
+            <div class="rot-card">
+                <div class="rot-icon" style="background:rgba(239,68,68,0.15);color:#f87171;"><i class="fa-solid fa-heart-pulse"></i></div>
+                <div class="rot-title">Internal Medicine</div>
+                <div class="rot-hosp"><i class="fa-solid fa-hospital"></i> ABSUTH, Aba</div>
+                <p class="rot-desc">Assessment and management of complex medical conditions including cardiovascular disease, diabetes mellitus, respiratory disorders, and infectious diseases prevalent in Nigeria.</p>
+                <div class="status done"><div class="status-dot"></div> Completed</div>
+            </div>
+
+            <div class="rot-card">
+                <div class="rot-icon" style="background:rgba(59,130,246,0.15);color:#60a5fa;"><i class="fa-solid fa-scalpel"></i></div>
+                <div class="rot-title">General Surgery</div>
+                <div class="rot-hosp"><i class="fa-solid fa-hospital"></i> ABSUTH, Aba</div>
+                <p class="rot-desc">Exposure to pre-operative assessment, intraoperative scrubbing, and post-operative management. Assisted in elective and emergency procedures across surgical subspecialties.</p>
+                <div class="status done"><div class="status-dot"></div> Completed</div>
+            </div>
+
+            <div class="rot-card">
+                <div class="rot-icon" style="background:rgba(168,85,247,0.15);color:#c084fc;"><i class="fa-solid fa-baby"></i></div>
+                <div class="rot-title">Paediatrics</div>
+                <div class="rot-hosp"><i class="fa-solid fa-hospital"></i> ABSUTH, Aba</div>
+                <p class="rot-desc">Clinical care of neonates, infants, and children. Exposure to paediatric emergencies, growth and developmental assessment, immunisation, and common childhood illnesses.</p>
+                <div class="status done"><div class="status-dot"></div> Completed</div>
+            </div>
+
+            <div class="rot-card">
+                <div class="rot-icon" style="background:rgba(236,72,153,0.15);color:#f472b6;"><i class="fa-solid fa-venus"></i></div>
+                <div class="rot-title">Obstetrics & Gynaecology</div>
+                <div class="rot-hosp"><i class="fa-solid fa-hospital"></i> ABSUTH, Aba</div>
+                <p class="rot-desc">Antenatal care, labour monitoring, postnatal follow-up, and gynaecological procedures. Participation in normal and assisted deliveries, and family planning counselling.</p>
+                <div class="status ongoing"><div class="status-dot"></div> Ongoing</div>
+            </div>
+
+            <div class="rot-card">
+                <div class="rot-icon" style="background:rgba(34,197,94,0.15);color:#4ade80;"><i class="fa-solid fa-people-group"></i></div>
+                <div class="rot-title">Community Medicine</div>
+                <div class="rot-hosp"><i class="fa-solid fa-map-pin"></i> ABSU / Abia State Communities</div>
+                <p class="rot-desc">Epidemiology, public health principles, disease surveillance, and community health outreach programs targeting underserved and rural populations across Abia State.</p>
+                <div class="status done"><div class="status-dot"></div> Completed</div>
+            </div>
+
+            <div class="rot-card">
+                <div class="rot-icon" style="background:rgba(251,191,36,0.15);color:#fbbf24;"><i class="fa-solid fa-brain"></i></div>
+                <div class="rot-title">Psychiatry</div>
+                <div class="rot-hosp"><i class="fa-solid fa-hospital"></i> ABSUTH, Aba</div>
+                <p class="rot-desc">Assessment and management of mental health conditions including schizophrenia, depression, and substance use disorders. Exposure to psychotherapy and mental health advocacy.</p>
+                <div class="status done"><div class="status-dot"></div> Completed</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════ RESEARCH ══ -->
+<section class="research" id="research">
+    <div class="container">
+        <div class="reveal">
+            <div class="sec-label">Research & Projects</div>
+            <h2 class="sec-title">Academic Work</h2>
+            <p class="sec-sub">Ongoing and completed research projects contributing to evidence-based medicine and healthcare improvement in Nigeria.</p>
+        </div>
+        <div class="res-grid reveal">
+
+            <div class="res-card">
+                <div class="res-type tag-t tag"><i class="fa-solid fa-flask"></i> Research Project</div>
+                <div class="res-title">[Research Title Placeholder] — e.g. Prevalence of Hypertension Among Young Adults in Abia State</div>
+                <p class="res-desc">A cross-sectional study examining the prevalence, risk factors, and awareness of hypertension among adults attending ABSUTH. Data collection and statistical analysis in progress.</p>
+                <div class="res-meta">
+                    <span><i class="fa-regular fa-calendar"></i> 2024 – Ongoing</span>
+                    <span><i class="fa-solid fa-users"></i> Collaborative</span>
+                </div>
+            </div>
+
+            <div class="res-card">
+                <div class="res-type tag-n tag"><i class="fa-solid fa-file-medical"></i> Case Study</div>
+                <div class="res-title">[Case Study Placeholder] — e.g. Atypical Presentation of Sickle Cell Crisis in a Paediatric Patient</div>
+                <p class="res-desc">Documentation and clinical analysis of an unusual case encountered during Paediatrics rotation, highlighting diagnostic challenges and evidence-based management strategies.</p>
+                <div class="res-meta">
+                    <span><i class="fa-regular fa-calendar"></i> 2024</span>
+                    <span><i class="fa-solid fa-hospital"></i> ABSUTH</span>
+                </div>
+            </div>
+
+            <div class="res-card">
+                <div class="res-type tag-g tag"><i class="fa-solid fa-hand-holding-heart"></i> Community Health</div>
+                <div class="res-title">Free Medical Outreach — Maternal & Child Health Programme</div>
+                <p class="res-desc">Participated in a community health outreach providing free consultations, health screenings, and maternal health education to women and children in rural Abia State communities.</p>
+                <div class="res-meta">
+                    <span><i class="fa-regular fa-calendar"></i> 2023</span>
+                    <span><i class="fa-solid fa-map-pin"></i> Abia State</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════ SKILLS ════ -->
+<section class="skills" id="skills">
+    <div class="container">
+        <div class="reveal">
+            <div class="sec-label">Skills & Competencies</div>
+            <h2 class="sec-title">What I Bring</h2>
+            <p class="sec-sub">A blend of clinical expertise, research capability, and interpersonal skills built through rigorous academic and hands-on training.</p>
+        </div>
+        <div class="skills-grid reveal">
+            <div>
+                <div class="skill-group-title"><i class="fa-solid fa-stethoscope"></i> Clinical Skills</div>
+                <div class="skill-item"><div class="skill-head"><span class="skill-name">Patient History Taking</span><span class="skill-lvl">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-w="92"></div></div></div>
+                <div class="skill-item"><div class="skill-head"><span class="skill-name">Clinical Examination</span><span class="skill-lvl">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-w="88"></div></div></div>
+                <div class="skill-item"><div class="skill-head"><span class="skill-name">Differential Diagnosis</span><span class="skill-lvl">Proficient</span></div><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div></div>
+                <div class="skill-item"><div class="skill-head"><span class="skill-name">IV Cannulation & Venepuncture</span><span class="skill-lvl">Proficient</span></div><div class="skill-bar"><div class="skill-fill" data-w="84"></div></div></div>
+                <div class="skill-item"><div class="skill-head"><span class="skill-name">ECG Interpretation</span><span class="skill-lvl">Competent</span></div><div class="skill-bar"><div class="skill-fill" data-w="70"></div></div></div>
+
+                <div class="skill-group-title" style="margin-top:2.5rem;"><i class="fa-solid fa-globe"></i> Languages</div>
+                <div class="langs">
+                    <div class="lang-row"><span class="lang-name">English</span><div class="lang-dots"><div class="ld on"></div><div class="ld on"></div><div class="ld on"></div><div class="ld on"></div><div class="ld on"></div></div></div>
+                    <div class="lang-row"><span class="lang-name">Igbo</span><div class="lang-dots"><div class="ld on"></div><div class="ld on"></div><div class="ld on"></div><div class="ld on"></div><div class="ld"></div></div></div>
+                    <div class="lang-row"><span class="lang-name">Yoruba (Basic)</span><div class="lang-dots"><div class="ld on"></div><div class="ld on"></div><div class="ld"></div><div class="ld"></div><div class="ld"></div></div></div>
+                </div>
+            </div>
+            <div>
+                <div class="skill-group-title"><i class="fa-solid fa-lightbulb"></i> Other Competencies</div>
+                <div class="chips">
+                    <div class="chip">Medical Research</div>
+                    <div class="chip">Clinical Documentation</div>
+                    <div class="chip">Patient Communication</div>
+                    <div class="chip">Team Collaboration</div>
+                    <div class="chip">Evidence-Based Medicine</div>
+                    <div class="chip">First Aid & BLS</div>
+                    <div class="chip">Public Health</div>
+                    <div class="chip">Data Analysis</div>
+                    <div class="chip">Microsoft Office</div>
+                    <div class="chip">Critical Thinking</div>
+                    <div class="chip">Leadership</div>
+                    <div class="chip">Empathy & Counselling</div>
+                </div>
+
+                <div class="skill-group-title" style="margin-top:2.5rem;"><i class="fa-solid fa-chart-bar"></i> Academic Strengths</div>
+                <div class="skill-item"><div class="skill-head"><span class="skill-name">Pharmacology</span><span class="skill-lvl">Strong</span></div><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div></div>
+                <div class="skill-item"><div class="skill-head"><span class="skill-name">Pathology & Histology</span><span class="skill-lvl">Strong</span></div><div class="skill-bar"><div class="skill-fill" data-w="82"></div></div></div>
+                <div class="skill-item"><div class="skill-head"><span class="skill-name">Clinical Research Methods</span><span class="skill-lvl">Developing</span></div><div class="skill-bar"><div class="skill-fill" data-w="68"></div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════ ACHIEVEMENTS ═ -->
+<section class="achievements" id="achievements">
+    <div class="container">
+        <div class="reveal">
+            <div class="sec-label">Achievements & Affiliations</div>
+            <h2 class="sec-title">Recognition & Membership</h2>
+            <p class="sec-sub">Academic achievements, professional memberships, and contributions to the medical community.</p>
+        </div>
+        <div class="ach-grid reveal">
+            <div class="ach-card">
+                <div class="ach-icon" style="background:rgba(201,168,76,0.12);">🏆</div>
+                <div class="ach-title">[Academic Award Placeholder]</div>
+                <div class="ach-org">Abia State University</div>
+                <div class="ach-year">20XX</div>
+            </div>
+            <div class="ach-card">
+                <div class="ach-icon" style="background:rgba(11,110,110,0.1);">🩺</div>
+                <div class="ach-title">Medical Students' Association of Nigeria (MSAN)</div>
+                <div class="ach-org">ABSU Chapter — Active Member</div>
+                <div class="ach-year">2019 – Present</div>
+            </div>
+            <div class="ach-card">
+                <div class="ach-icon" style="background:rgba(239,68,68,0.1);">❤️</div>
+                <div class="ach-title">Community Health Volunteer</div>
+                <div class="ach-org">Free Medical Outreach, Abia State</div>
+                <div class="ach-year">2023</div>
+            </div>
+            <div class="ach-card">
+                <div class="ach-icon" style="background:rgba(168,85,247,0.1);">📋</div>
+                <div class="ach-title">[Leadership Role Placeholder]</div>
+                <div class="ach-org">e.g. Class Rep · Society Officer · Peer Tutor</div>
+                <div class="ach-year">20XX – 20XX</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTACT ═══ -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto 1rem;">
+            <div class="sec-label">Contact</div>
+            <h2 class="sec-title">Let's Connect</h2>
+            <p class="sec-sub" style="margin:0.75rem auto 0;">Open to research collaborations, mentorship, healthcare initiatives, or just a conversation about medicine.</p>
+        </div>
+        <div class="contact-grid reveal">
+            <div>
+                <p class="contact-blurb">Whether you're a fellow medical student, a clinician, a researcher, or someone passionate about healthcare in Nigeria — I'd genuinely love to hear from you.</p>
+                <div class="citem"><div class="cicon"><i class="fa-solid fa-envelope"></i></div><div><div class="ci-lbl">Email</div><div class="ci-val">chidinma.ugbor@placeholder.com</div></div></div>
+                <div class="citem"><div class="cicon"><i class="fa-solid fa-location-dot"></i></div><div><div class="ci-lbl">Location</div><div class="ci-val">Aba, Abia State, Nigeria</div></div></div>
+                <div class="citem"><div class="cicon"><i class="fa-solid fa-building-columns"></i></div><div><div class="ci-lbl">Institution</div><div class="ci-val">Abia State University · ABSUTH</div></div></div>
+                <div class="social-row" style="margin-top:2rem;">
+                    <a href="#" class="soc-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="soc-btn" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="soc-btn" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+                </div>
+            </div>
+            <div class="cform">
+                <form onsubmit="return false;">
+                    <div class="form-row">
+                        <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" placeholder="John"></div>
+                        <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" placeholder="Doe"></div>
+                    </div>
+                    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@example.com"></div>
+                    <div class="form-group"><label class="form-label">Subject</label><input type="text" class="form-input" placeholder="Research collaboration, Mentorship…"></div>
+                    <div class="form-group"><label class="form-label">Message</label><textarea class="form-ta" placeholder="Tell me a bit about yourself and what you have in mind…"></textarea></div>
+                    <button type="submit" class="btn-send"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ════ -->
+<footer>
+    <div class="footer-inner">
+        <div class="foot-logo">Chidinma<span>.</span></div>
+        <p class="foot-copy">© 2026 Ugbor Chidinma Benita &nbsp;·&nbsp; Aspiring Physician</p>
+        <div class="foot-social">
+            <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll effect
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+
+    // Floating crosses in hero
+    const heroBg = document.getElementById('hero-bg');
+    ['✚','⚕','✚','⚕','✚'].forEach((s, i) => {
+        const el = document.createElement('div');
+        el.className = 'cross-float';
+        el.textContent = s;
+        el.style.cssText = `left:${8+i*20}%;top:${12+(i%3)*22}%;animation-delay:${i*0.8}s;font-size:${1.1+(i%3)*0.4}rem;`;
+        heroBg.appendChild(el);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach((e, idx) => {
+            if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), idx * 80);
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Skill bar animation
+    const barObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const w = e.target.dataset.w;
+                e.target.style.transition = 'transform 1.2s cubic-bezier(0.4,0,0.2,1)';
+                e.target.style.transform = `scaleX(${w/100})`;
+                barObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.skill-fill').forEach(b => barObserver.observe(b));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navAs = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let cur = '';
+        sections.forEach(s => { if (scrollY >= s.offsetTop - 130) cur = s.id; });
+        navAs.forEach(a => {
+            const active = a.getAttribute('href') === `#${cur}`;
+            a.style.color = active ? 'var(--teal)' : '';
+        });
+    });
+</script>
+</body>
+</html>
