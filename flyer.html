@@ -5,270 +5,212 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Website Building Services — David Ugbor</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --gold:    #F5C842;
-    --gold2:   #E8A820;
-    --navy:    #0B1120;
-    --navy2:   #0F1A30;
-    --teal:    #00C9A7;
-    --white:   #FFFFFF;
-    --glass:   rgba(255,255,255,0.06);
-    --border:  rgba(245,200,66,0.25);
+    --gold:  #F5C842;
+    --gold2: #E8A820;
+    --navy:  #0A0F1E;
+    --teal:  #00C9A7;
+    --white: #FFFFFF;
   }
 
   html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    width: 100%; height: 100%;
+    margin: 0; padding: 0;
     overflow: hidden;
     background: var(--navy);
     font-family: 'Inter', sans-serif;
   }
 
-  /* ── Poster — fills exact screen ───────────────── */
   .poster {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(160deg, #0F1A30 0%, #0B1120 55%, #071028 100%);
+    background: linear-gradient(150deg, #0F1830 0%, #0A0F1E 60%, #060C18 100%);
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(28px, 4vh, 60px) clamp(32px, 6vw, 110px);
   }
 
-  /* ── Decorative blobs ───────────────────────────── */
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(clamp(60px, 6vw, 120px));
-    opacity: 0.35;
-    pointer-events: none;
-  }
-  .blob-1 { width: 48vw; height: 48vw; background: #1a4fd6; top: -18vh; right: -14vw; }
-  .blob-2 { width: 32vw; height: 32vw; background: #00C9A7; bottom: 6vh; left: -10vw; }
-  .blob-3 { width: 24vw; height: 24vw; background: var(--gold); bottom: -8vh; right: 6vw; opacity: 0.18; }
-
-  /* ── Grid dots overlay ──────────────────────────── */
-  .poster::before {
+  /* single soft blue glow, top-right only */
+  .poster::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: clamp(24px, 2.5vw, 48px) clamp(24px, 2.5vw, 48px);
+    width: 50vw; height: 60vh;
+    background: radial-gradient(ellipse, rgba(30,80,220,0.22) 0%, transparent 70%);
+    top: -10vh; right: -8vw;
     pointer-events: none;
-    z-index: 0;
   }
 
-  /* ── All sections sit above blobs/dots ──────────── */
-  .header-strip, .hero, .divider, .services, .why-strip, .cta-section, .footer {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* ── Header strip ───────────────────────────────── */
-  .header-strip {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: clamp(14px, 2.2vh, 28px) clamp(28px, 5vw, 80px) 0;
-  }
+  /* ── Badge ──────────────────────────────────────── */
   .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: linear-gradient(135deg, var(--gold), var(--gold2));
     color: var(--navy);
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(9px, 0.75vw, 14px);
+    font-size: clamp(9px, 0.75vw, 13px);
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding: clamp(4px, 0.5vh, 8px) clamp(10px, 1.2vw, 22px);
+    padding: clamp(5px, 0.6vh, 9px) clamp(14px, 1.4vw, 24px);
     border-radius: 100px;
-  }
-  .stars { display: flex; gap: clamp(2px, 0.3vw, 6px); }
-  .star {
-    width: clamp(12px, 1.3vw, 24px);
-    height: clamp(12px, 1.3vw, 24px);
-    background: var(--gold);
-    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    width: fit-content;
   }
 
   /* ── Hero ───────────────────────────────────────── */
-  .hero {
-    padding: clamp(18px, 2.8vh, 42px) clamp(28px, 5vw, 80px) 0;
-  }
+  .hero { position: relative; z-index: 1; }
+
   .eyebrow {
-    font-size: clamp(10px, 0.9vw, 17px);
-    letter-spacing: 0.16em;
+    font-size: clamp(11px, 0.9vw, 16px);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--teal);
     font-weight: 600;
-    margin-bottom: clamp(8px, 1vh, 18px);
+    margin-bottom: clamp(10px, 1.2vh, 20px);
   }
+
   .headline {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(38px, 5.2vw, 96px);
+    font-size: clamp(44px, 5.8vw, 108px);
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.04;
     color: var(--white);
+    letter-spacing: -0.02em;
   }
   .headline span {
-    background: linear-gradient(90deg, var(--gold), var(--teal));
+    background: linear-gradient(90deg, var(--gold) 0%, var(--teal) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .subline {
-    margin-top: clamp(10px, 1.2vh, 20px);
-    font-size: clamp(13px, 1.25vw, 22px);
-    color: rgba(255,255,255,0.62);
-    line-height: 1.55;
-    max-width: 65vw;
+    margin-top: clamp(12px, 1.5vh, 24px);
+    font-size: clamp(14px, 1.3vw, 22px);
+    color: rgba(255,255,255,0.52);
+    line-height: 1.6;
+    max-width: 60vw;
+    font-weight: 400;
   }
 
-  /* ── Divider ────────────────────────────────────── */
-  .divider {
-    margin: clamp(16px, 2.5vh, 36px) clamp(28px, 5vw, 80px);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-  }
-
-  /* ── Services grid ──────────────────────────────── */
+  /* ── Services — icon + label only ──────────────── */
   .services {
-    padding: 0 clamp(28px, 5vw, 80px);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(8px, 1.2vw, 20px);
-    flex-shrink: 0;
+    display: flex;
+    gap: clamp(10px, 1.4vw, 24px);
+    position: relative;
+    z-index: 1;
   }
   .service-card {
-    background: var(--glass);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: clamp(12px, 1.2vw, 22px);
-    padding: clamp(14px, 1.8vh, 28px) clamp(14px, 1.6vw, 28px);
-    display: flex;
-    align-items: flex-start;
-    gap: clamp(10px, 1.2vw, 20px);
-    backdrop-filter: blur(10px);
-  }
-  .svc-icon {
-    width: clamp(36px, 3.5vw, 64px);
-    height: clamp(36px, 3.5vw, 64px);
-    border-radius: clamp(8px, 0.7vw, 14px);
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: clamp(12px, 1.2vw, 20px);
+    padding: clamp(16px, 2vh, 32px) clamp(14px, 1.6vw, 26px);
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: clamp(15px, 1.6vw, 28px);
+    gap: clamp(10px, 1vw, 18px);
+  }
+  .svc-icon {
+    font-size: clamp(20px, 2vw, 36px);
     flex-shrink: 0;
   }
-  .svc-icon.blue   { background: rgba(26,79,214,0.25); }
-  .svc-icon.teal   { background: rgba(0,201,167,0.20); }
-  .svc-icon.gold   { background: rgba(245,200,66,0.18); }
-  .svc-icon.purple { background: rgba(139,92,246,0.22); }
   .svc-title {
-    font-size: clamp(12px, 1.15vw, 21px);
+    font-size: clamp(12px, 1.1vw, 20px);
     font-weight: 700;
     color: var(--white);
-    margin-bottom: clamp(2px, 0.3vh, 6px);
-  }
-  .svc-desc {
-    font-size: clamp(10px, 0.85vw, 15px);
-    color: rgba(255,255,255,0.50);
-    line-height: 1.4;
   }
 
   /* ── Stats strip ────────────────────────────────── */
-  .why-strip {
-    margin: clamp(14px, 2vh, 32px) clamp(28px, 5vw, 80px) 0;
-    background: linear-gradient(135deg, rgba(245,200,66,0.10), rgba(0,201,167,0.08));
-    border: 1px solid rgba(245,200,66,0.18);
-    border-radius: clamp(12px, 1.2vw, 22px);
-    padding: clamp(12px, 1.8vh, 28px) clamp(18px, 2.5vw, 40px);
+  .stats {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: clamp(10px, 1.4vw, 24px);
+    position: relative;
+    z-index: 1;
   }
-  .stat { text-align: center; flex: 1; }
+  .stat-card {
+    flex: 1;
+    background: rgba(245,200,66,0.07);
+    border: 1px solid rgba(245,200,66,0.14);
+    border-radius: clamp(10px, 1vw, 18px);
+    padding: clamp(14px, 1.8vh, 28px) clamp(14px, 1.6vw, 26px);
+    text-align: center;
+  }
   .stat-num {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(22px, 2.6vw, 48px);
+    font-size: clamp(24px, 2.8vw, 52px);
     font-weight: 700;
     color: var(--gold);
     line-height: 1;
   }
   .stat-label {
-    font-size: clamp(8px, 0.72vw, 13px);
-    color: rgba(255,255,255,0.50);
-    margin-top: clamp(2px, 0.4vh, 7px);
+    margin-top: clamp(3px, 0.4vh, 7px);
+    font-size: clamp(9px, 0.72vw, 13px);
+    color: rgba(255,255,255,0.42);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .stat-sep {
-    width: 1px;
-    height: clamp(28px, 4vh, 56px);
-    background: rgba(255,255,255,0.10);
-    flex-shrink: 0;
+    letter-spacing: 0.09em;
   }
 
-  /* ── CTA section ────────────────────────────────── */
+  /* ── CTA ────────────────────────────────────────── */
   .cta-section {
-    margin: clamp(14px, 2vh, 32px) clamp(28px, 5vw, 80px) 0;
     display: flex;
-    gap: clamp(8px, 1.2vw, 20px);
-    align-items: stretch;
+    gap: clamp(10px, 1.4vw, 24px);
+    position: relative;
+    z-index: 1;
   }
   .cta-main {
-    flex: 1;
+    flex: 2;
     background: linear-gradient(135deg, var(--gold), var(--gold2));
-    border-radius: clamp(10px, 1vw, 18px);
-    padding: clamp(14px, 1.8vh, 28px) clamp(16px, 2vw, 32px);
+    border-radius: clamp(12px, 1.1vw, 20px);
+    padding: clamp(16px, 2vh, 30px) clamp(20px, 2.2vw, 36px);
     color: var(--navy);
   }
   .cta-main .label {
-    font-size: clamp(9px, 0.75vw, 13px);
-    font-weight: 600;
+    font-size: clamp(9px, 0.72vw, 13px);
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    opacity: 0.7;
-    margin-bottom: clamp(2px, 0.4vh, 7px);
+    opacity: 0.65;
+    margin-bottom: clamp(2px, 0.3vh, 6px);
   }
   .cta-main .value {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(14px, 1.4vw, 26px);
+    font-size: clamp(14px, 1.5vw, 26px);
     font-weight: 700;
   }
   .cta-side {
     flex: 1;
-    background: var(--glass);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: clamp(10px, 1vw, 18px);
-    padding: clamp(14px, 1.8vh, 28px) clamp(16px, 2vw, 32px);
-    color: var(--white);
+    background: rgba(0,201,167,0.10);
+    border: 1px solid rgba(0,201,167,0.22);
+    border-radius: clamp(12px, 1.1vw, 20px);
+    padding: clamp(16px, 2vh, 30px) clamp(20px, 2.2vw, 36px);
   }
   .cta-side .label {
-    font-size: clamp(10px, 0.85vw, 15px);
+    font-size: clamp(9px, 0.72vw, 13px);
     font-weight: 600;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: clamp(2px, 0.4vh, 7px);
+    color: rgba(255,255,255,0.42);
+    margin-bottom: clamp(2px, 0.3vh, 6px);
   }
   .cta-side .value {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(14px, 1.4vw, 26px);
+    font-size: clamp(14px, 1.5vw, 26px);
     font-weight: 700;
     color: var(--teal);
   }
 
   /* ── Footer ─────────────────────────────────────── */
   .footer {
-    margin-top: auto;
-    padding: clamp(12px, 1.8vh, 28px) clamp(28px, 5vw, 80px) clamp(16px, 2.5vh, 36px);
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
   }
   .footer-brand {
     font-family: 'Space Grotesk', sans-serif;
@@ -278,113 +220,70 @@
   }
   .footer-brand span { color: var(--gold); }
   .footer-tagline {
-    font-size: clamp(8px, 0.72vw, 13px);
-    color: rgba(255,255,255,0.35);
     margin-top: clamp(2px, 0.3vh, 5px);
+    font-size: clamp(9px, 0.72vw, 13px);
+    color: rgba(255,255,255,0.28);
   }
-  .footer-socials {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: clamp(3px, 0.4vh, 7px);
+  .footer-email {
+    font-size: clamp(10px, 0.85vw, 15px);
+    color: rgba(255,255,255,0.35);
+    text-align: right;
   }
-  .social-pill {
-    background: var(--glass);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 100px;
-    padding: clamp(3px, 0.4vh, 7px) clamp(10px, 1.1vw, 20px);
-    font-size: clamp(9px, 0.75vw, 13px);
-    color: rgba(255,255,255,0.55);
-    font-weight: 500;
-  }
-  .social-pill strong { color: var(--white); font-weight: 600; }
 </style>
 </head>
 <body>
-
 <div class="poster">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
 
-  <!-- Header strip -->
-  <div class="header-strip">
-    <div class="badge">✦ Now Accepting Clients</div>
-    <div class="stars">
-      <div class="star"></div><div class="star"></div><div class="star"></div>
-      <div class="star"></div><div class="star"></div>
-    </div>
-  </div>
+  <div class="badge">✦ Now Accepting Clients</div>
 
-  <!-- Hero -->
   <div class="hero">
     <div class="eyebrow">⚡ Professional Web Development</div>
     <div class="headline">
       Your Business<br>Deserves a <span>World‑Class</span><br>Website
     </div>
     <div class="subline">
-      I build fast, beautiful, mobile-ready websites that turn visitors into customers — delivered quickly and professionally.
+      Fast, beautiful, mobile-ready websites that turn visitors into customers.
     </div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- Services -->
   <div class="services">
     <div class="service-card">
-      <div class="svc-icon blue">🌐</div>
-      <div>
-        <div class="svc-title">Business Websites</div>
-        <div class="svc-desc">Clean, professional sites that represent your brand perfectly</div>
-      </div>
+      <div class="svc-icon">🌐</div>
+      <div class="svc-title">Business Sites</div>
     </div>
     <div class="service-card">
-      <div class="svc-icon teal">🛒</div>
-      <div>
-        <div class="svc-title">Online Stores</div>
-        <div class="svc-desc">E-commerce solutions built to sell 24/7</div>
-      </div>
+      <div class="svc-icon">🛒</div>
+      <div class="svc-title">Online Stores</div>
     </div>
     <div class="service-card">
-      <div class="svc-icon gold">👤</div>
-      <div>
-        <div class="svc-title">Portfolio Sites</div>
-        <div class="svc-desc">Showcase your work and attract the right clients</div>
-      </div>
+      <div class="svc-icon">👤</div>
+      <div class="svc-title">Portfolios</div>
     </div>
     <div class="service-card">
-      <div class="svc-icon purple">📱</div>
-      <div>
-        <div class="svc-title">Landing Pages</div>
-        <div class="svc-desc">High-converting pages designed to grow your audience</div>
-      </div>
+      <div class="svc-icon">📱</div>
+      <div class="svc-title">Landing Pages</div>
     </div>
   </div>
 
-  <!-- Stats strip -->
-  <div class="why-strip">
-    <div class="stat">
+  <div class="stats">
+    <div class="stat-card">
       <div class="stat-num">48h</div>
       <div class="stat-label">Fast Delivery</div>
     </div>
-    <div class="stat-sep"></div>
-    <div class="stat">
+    <div class="stat-card">
       <div class="stat-num">100%</div>
       <div class="stat-label">Mobile Ready</div>
     </div>
-    <div class="stat-sep"></div>
-    <div class="stat">
+    <div class="stat-card">
       <div class="stat-num">∞</div>
       <div class="stat-label">Revisions</div>
     </div>
-    <div class="stat-sep"></div>
-    <div class="stat">
+    <div class="stat-card">
       <div class="stat-num">SEO</div>
       <div class="stat-label">Optimized</div>
     </div>
   </div>
 
-  <!-- CTA -->
   <div class="cta-section">
     <div class="cta-main">
       <div class="label">📧 Email Me</div>
@@ -396,18 +295,14 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <div class="footer">
     <div>
       <div class="footer-brand">David <span>Ugbor</span></div>
       <div class="footer-tagline">Web Developer · Designer · Digital Creator</div>
     </div>
-    <div class="footer-socials">
-      <div class="social-pill"><strong>GitHub</strong> · davidugbor</div>
-      <div class="social-pill"><strong>Let's build something great together</strong></div>
-    </div>
+    <div class="footer-email">ugbordavido@gmail.com</div>
   </div>
-</div>
 
+</div>
 </body>
 </html>
