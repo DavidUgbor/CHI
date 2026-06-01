@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Building Services — David Ugbor</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold:    #F5C842;
+    --gold2:   #E8A820;
+    --navy:    #0B1120;
+    --navy2:   #0F1A30;
+    --teal:    #00C9A7;
+    --white:   #FFFFFF;
+    --glass:   rgba(255,255,255,0.06);
+    --border:  rgba(245,200,66,0.25);
+  }
+
+  body {
+    background: var(--navy);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  /* ── Poster wrapper ─────────────────────────────── */
+  .poster {
+    width: 640px;
+    background: linear-gradient(160deg, #0F1A30 0%, #0B1120 55%, #071028 100%);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(245,200,66,0.1);
+  }
+
+  /* ── Decorative blobs ───────────────────────────── */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .blob-1 { width: 380px; height: 380px; background: #1a4fd6; top: -140px; right: -120px; }
+  .blob-2 { width: 260px; height: 260px; background: #00C9A7; bottom: 60px; left: -100px; }
+  .blob-3 { width: 200px; height: 200px; background: var(--gold); bottom: -80px; right: 60px; opacity: 0.18; }
+
+  /* ── Grid dots overlay ──────────────────────────── */
+  .poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  /* ── Header strip ───────────────────────────────── */
+  .header-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px 0;
+    position: relative;
+    z-index: 2;
+  }
+  .badge {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--navy);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+  }
+  .stars {
+    display: flex;
+    gap: 3px;
+  }
+  .star {
+    width: 14px; height: 14px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  }
+
+  /* ── Hero section ───────────────────────────────── */
+  .hero {
+    padding: 28px 40px 0;
+    position: relative;
+    z-index: 2;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--white);
+  }
+  .headline span {
+    background: linear-gradient(90deg, var(--gold), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subline {
+    margin-top: 14px;
+    font-size: 15.5px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.55;
+    max-width: 420px;
+  }
+
+  /* ── Divider ────────────────────────────────────── */
+  .divider {
+    margin: 28px 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Services grid ──────────────────────────────── */
+  .services {
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+  }
+  .service-card {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.2s;
+  }
+  .service-card:hover { border-color: var(--border); }
+  .svc-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .svc-icon.blue   { background: rgba(26,79,214,0.25); }
+  .svc-icon.teal   { background: rgba(0,201,167,0.20); }
+  .svc-icon.gold   { background: rgba(245,200,66,0.18); }
+  .svc-icon.purple { background: rgba(139,92,246,0.22); }
+  .svc-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .svc-desc {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.50);
+    line-height: 1.4;
+  }
+
+  /* ── Why me strip ───────────────────────────────── */
+  .why-strip {
+    margin: 24px 40px 0;
+    background: linear-gradient(135deg, rgba(245,200,66,0.10), rgba(0,201,167,0.08));
+    border: 1px solid rgba(245,200,66,0.18);
+    border-radius: 16px;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .stat {
+    text-align: center;
+    flex: 1;
+  }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.50);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stat-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.10);
+    flex-shrink: 0;
+  }
+
+  /* ── Testimonial ────────────────────────────────── */
+  .testimonial {
+    margin: 20px 40px 0;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 16px 20px;
+    position: relative;
+    z-index: 2;
+  }
+  .quote-mark {
+    font-size: 40px;
+    color: var(--gold);
+    line-height: 0.6;
+    font-family: Georgia, serif;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .quote-text {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .quote-author {
+    margin-top: 10px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--teal);
+  }
+
+  /* ── CTA section ────────────────────────────────── */
+  .cta-section {
+    margin: 24px 40px 0;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .cta-main {
+    flex: 1;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    border-radius: 14px;
+    padding: 18px 22px;
+    color: var(--navy);
+  }
+  .cta-main .label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+  .cta-main .value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .cta-side {
+    flex: 1;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 18px 22px;
+    color: var(--white);
+  }
+  .cta-side .label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 4px;
+  }
+  .cta-side .value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  /* ── Footer ─────────────────────────────────────── */
+  .footer {
+    margin-top: 28px;
+    padding: 16px 40px 28px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .footer-brand span { color: var(--gold); }
+  .footer-tagline {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 2px;
+  }
+  .footer-socials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .social-pill {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+  }
+  .social-pill strong { color: var(--white); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <!-- Decorative blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- Header strip -->
+  <div class="header-strip">
+    <div class="badge">✦ Now Accepting Clients</div>
+    <div class="stars">
+      <div class="star"></div><div class="star"></div><div class="star"></div>
+      <div class="star"></div><div class="star"></div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="eyebrow">⚡ Professional Web Development</div>
+    <div class="headline">
+      Your Business<br>Deserves a <span>World‑Class</span><br>Website
+    </div>
+    <div class="subline">
+      I build fast, beautiful, mobile-ready websites that turn visitors into customers — delivered quickly and professionally.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Services -->
+  <div class="services">
+    <div class="service-card">
+      <div class="svc-icon blue">🌐</div>
+      <div>
+        <div class="svc-title">Business Websites</div>
+        <div class="svc-desc">Clean, professional sites that represent your brand perfectly</div>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon teal">🛒</div>
+      <div>
+        <div class="svc-title">Online Stores</div>
+        <div class="svc-desc">E-commerce solutions built to sell 24/7</div>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon gold">👤</div>
+      <div>
+        <div class="svc-title">Portfolio Sites</div>
+        <div class="svc-desc">Showcase your work and attract the right clients</div>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon purple">📱</div>
+      <div>
+        <div class="svc-title">Landing Pages</div>
+        <div class="svc-desc">High-converting pages designed to grow your audience</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="why-strip">
+    <div class="stat">
+      <div class="stat-num">48h</div>
+      <div class="stat-label">Fast Delivery</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Mobile Ready</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Revisions</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <div class="stat-num">SEO</div>
+      <div class="stat-label">Optimized</div>
+    </div>
+  </div>
+
+  <!-- Testimonial -->
+  <div class="testimonial">
+    <div class="quote-mark">"</div>
+    <div class="quote-text">
+      David delivered an incredible website for my business in record time. It looks stunning on every device and my clients keep complimenting it. Highly recommend!
+    </div>
+    <div class="quote-author">— Chidinma B., Medical Professional & Client</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-main">
+      <div class="label">📧 Email Me</div>
+      <div class="value">ugbordavido@gmail.com</div>
+    </div>
+    <div class="cta-side">
+      <div class="label">💬 DM to Get Started</div>
+      <div class="value">Free Consultation</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">David <span>Ugbor</span></div>
+      <div class="footer-tagline">Web Developer · Designer · Digital Creator</div>
+    </div>
+    <div class="footer-socials">
+      <div class="social-pill"><strong>GitHub</strong> · davidugbor</div>
+      <div class="social-pill"><strong>Let's build something great together</strong></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
